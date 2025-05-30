@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane"
+            prefHeight="600" prefWidth="900"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.alexandriafrontend.controllers.MenuController">
+
+    <!-- Menú lateral fijo -->
+    <AnchorPane fx:id="menuPane"
+                prefHeight="600" prefWidth="264"
+                style="-fx-background-color: #e6e6e6;">
+        <children>
+            <Label layoutX="21" layoutY="34" styleClass="titulo" text="Biblioteca">
+                <font>
+                    <Font name="System Bold" size="18"/>
+                </font>
+            </Label>
+
+            <Label layoutX="37" layoutY="67" styleClass="titulo" text="Menu">
+                <font>
+                    <Font name="System Bold" size="14"/>
+                </font>
+            </Label>
+
+            <Button fx:id="btnHome"
+                    layoutX="37" layoutY="97"
+                    prefHeight="25" prefWidth="203"
+                    onAction="#handleMenuAction"
+                    styleClass="menu-button" text="   Home"/>
+
+            <Button fx:id="btnBuscar"
+                    layoutX="37" layoutY="132"
+                    prefHeight="25" prefWidth="203"
+                    onAction="#handleMenuAction"
+                    styleClass="menu-button" text="   Buscar"/>
+
+            <Button fx:id="btnFavoritos"
+                    layoutX="37" layoutY="167"
+                    prefHeight="25" prefWidth="203"
+                    onAction="#handleMenuAction"
+                    styleClass="menu-button" text="   Favoritos"
+                    visible="false" managed="false"/>
+
+            <Button fx:id="btnBiblioteca"
+                    layoutX="37" layoutY="202"
+                    prefHeight="25" prefWidth="203"
+                    onAction="#handleMenuAction"
+                    styleClass="menu-button" text="   Mi biblioteca"
+                    visible="false" managed="false"/>
+
+            <Button fx:id="btnLecturasCompartidas"
+                    layoutX="37" layoutY="237"
+                    prefHeight="25" prefWidth="203"
+                    onAction="#handleMenuAction"
+                    styleClass="menu-button" text="   Lecturas compartidas"
+                    visible="false" managed="false"/>
+
+            <Button fx:id="btnCerrarSesion"
+                    layoutX="37" layoutY="272"
+                    prefHeight="25" prefWidth="203"
+                    onAction="#handleMenuAction"
+                    styleClass="menu-button" text="   Cerrar sesión"
+                    visible="false" managed="false"/>
+        </children>
+    </AnchorPane>
+
+    <!-- Contenedor para cargar contenido dinámico -->
+    <AnchorPane fx:id="contentPane"
+                layoutX="264" layoutY="0"
+                prefWidth="636" prefHeight="600"/>
+</AnchorPane>
+
