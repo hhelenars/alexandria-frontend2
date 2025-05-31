@@ -1,6 +1,11 @@
 package com.example.alexandriafrontend.controllers;
 
+import com.example.alexandriafrontend.api.ApiClient;
+import com.example.alexandriafrontend.api.ApiService;
+import com.example.alexandriafrontend.response.LoginResponse;
+import com.example.alexandriafrontend.session.SesionUsuario;
 import com.example.alexandriafrontend.utils.Utils;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,6 +13,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import java.io.IOException;
 
@@ -25,21 +34,51 @@ public class LoginController {
 	@FXML
 	private Button btnVolver;
 
+	ApiService apiService = ApiClient.getApiService();
+
 	@FXML
 	private void iniciarSesion() {
-		String usuario = tfEmail.getText();
+
+		String email = tfEmail.getText();
 		String contrasena = tfContrasena.getText();
 
-		if (usuario.equals("helena") && contrasena.equals("123")) {
-			Stage stage = (Stage) btnIniciarSesion.getScene().getWindow();
-			Utils.cambiarPantalla(stage, "/com/example/alexandriafrontend/Menu.fxml", (MenuController m) -> {
-				m.mostrarOpcionesPrivadas();
-				m.cargarInicioConUsuario("Helena");
-			});
-
-		} else {
-			mostrarAlerta("Credenciales incorrectas.");
+		if (email.isEmpty() || contrasena.isEmpty()) {
+			mostrarAlerta("Por favor, rellena todos los campos.");
+			return;
 		}
+
+		Call<LoginResponse> call = apiService.login(email, contrasena);
+
+		call.enqueue(new Callback<LoginResponse>() {
+			@Override
+			public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+				if (response.isSuccessful() && response.body() != null) {
+					String token = response.body().getToken();
+
+					// Guardar sesión
+					SesionUsuario.getInstancia().iniciarSesionConToken(token);
+
+					// Redirigir o cambiar de vista
+					System.out.println("Login correcto. Bienvenido " + response.body().getPrimerNombre());
+					Platform.runLater(() -> {
+						Stage stage = (Stage) btnIniciarSesion.getScene().getWindow();
+						Utils.cambiarPantalla(stage, "/com/example/alexandriafrontend/Menu.fxml", (MenuController m) -> {
+							m.mostrarOpcionesPrivadas();
+							m.cargarInicioConUsuario(SesionUsuario.getInstancia().getUsuarioActual());
+						});
+					});
+
+				} else {
+					System.out.println("Credenciales inválidas. Inténtalo de nuevo.");
+				}
+			}
+
+			@Override
+			public void onFailure(Call<LoginResponse> call, Throwable t) {
+				System.out.println("Error de conexión con el servidor");
+				t.printStackTrace();
+			}
+		});
 	}
 
 

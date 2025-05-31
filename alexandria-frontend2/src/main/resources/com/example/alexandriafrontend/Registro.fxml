@@ -36,10 +36,10 @@
               prefHeight="35.0" prefWidth="365.0"
               promptText="Nombre"/>
 
-   <TextField fx:id="tfApellidos"
+   <TextField fx:id="tfApellido"
               layoutX="264.0" layoutY="253.0"
               prefHeight="35.0" prefWidth="365.0"
-              promptText="Apellidos"/>
+              promptText="Apellido"/>
 
    <TextField fx:id="tfEmail"
               layoutX="264.0" layoutY="300.0"

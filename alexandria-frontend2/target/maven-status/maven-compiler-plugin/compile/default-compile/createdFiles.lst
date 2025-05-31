@@ -1,2 +1,4 @@
-com\example\alexandriafrontend\HelloController.class
-com\example\alexandriafrontend\HelloApplication.class
+com\example\alexandriafrontend\controllers\BuscarController$1.class
+com\example\alexandriafrontend\controllers\BuscarController$2.class
+com\example\alexandriafrontend\response\LibroResponse.class
+com\example\alexandriafrontend\controllers\InicioController$1.class

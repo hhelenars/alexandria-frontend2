@@ -2,7 +2,6 @@ package com.example.alexandriafrontend.session;
 
 import com.example.alexandriafrontend.model.Usuario;
 import com.example.alexandriafrontend.utils.JwtUtils;
-import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 public class SesionUsuario {
@@ -23,8 +22,11 @@ public class SesionUsuario {
     public void iniciarSesionConToken(String token) {
         this.token = token;
         JsonObject payload = JwtUtils.decodificarToken(token);
-        Gson gson = new Gson();
-        this.usuarioActual = gson.fromJson(payload.toString(), Usuario.class);
+
+        String nombre = payload.has("primerNombre") ? payload.get("primerNombre").getAsString() : "";
+        String apellido = payload.has("segundoNombre") ? payload.get("segundoNombre").getAsString() : "";
+
+        this.usuarioActual = new Usuario(nombre, apellido);
     }
 
     public Usuario getUsuarioActual() {
@@ -43,4 +45,11 @@ public class SesionUsuario {
         usuarioActual = null;
         token = null;
     }
+
+    // Si necesitas obtener el ID desde el token
+    public Long getIdDesdeToken() {
+        return JwtUtils.obtenerIdDesdeToken(token);
+    }
 }
+
+

@@ -1,6 +1,13 @@
 package com.example.alexandriafrontend.controllers;
 
+import com.example.alexandriafrontend.api.ApiClient;
+import com.example.alexandriafrontend.api.ApiService;
+import com.example.alexandriafrontend.model.Usuario;
+import com.example.alexandriafrontend.response.LibroResponse;
+import com.example.alexandriafrontend.response.LoginResponse;
+import com.example.alexandriafrontend.session.SesionUsuario;
 import com.example.alexandriafrontend.utils.Utils;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -8,6 +15,11 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Alert;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import java.util.List;
 
 public class InicioController {
 
@@ -23,19 +35,37 @@ public class InicioController {
     @FXML
     private Label lblNombreUsuario;
 
+    private ApiService apiService = ApiClient.getApiService();
+
+
     @FXML
     private void initialize() {
-        listalibros.getItems().addAll(
-                "La Celestina - Un clásico español",
-                "Don Quijote - Aventuras y locura",
-                "Cien años de soledad - Gabriel García Márquez",
-                "1984 - Distopía totalitaria",
-                "Orgullo y prejuicio - Jane Austen"
-        );
+
+        Call<List<LibroResponse>> call = apiService.obtenerTodosLibros();
+
+        call.enqueue(new Callback<List<LibroResponse>>() {
+            @Override
+            public void onResponse(Call<List<LibroResponse>> call, Response<List<LibroResponse>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    for (LibroResponse libro : response.body()) {
+                        String item = libro.getTitulo() + " - " + libro.getAutor();
+                        javafx.application.Platform.runLater(() -> listalibros.getItems().add(item));
+                    }
+                } else {
+                    System.out.println("Credenciales inválidas. Inténtalo de nuevo.");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<LibroResponse>> call, Throwable t) {
+                System.out.println("Error de conexión con el servidor");
+                t.printStackTrace();
+            }
+        });
     }
 
-    public void mostrarUsuarioLogueado(String nombreUsuario) {
-        lblNombreUsuario.setText("Bienvenido, " + nombreUsuario);
+    public void mostrarUsuarioLogueado(Usuario usuario) {
+        lblNombreUsuario.setText(usuario.getNombre()+" "+usuario.getApellido() );
         lblNombreUsuario.setVisible(true);
         btnIniciarSesion.setVisible(false);
         btnCrearCuenta.setVisible(false);
@@ -54,14 +84,6 @@ public class InicioController {
             Utils.cambiarPantalla(stage, "/com/example/alexandriafrontend/Registro.fxml", controller -> {});
             System.out.println("Cargando Registro.fxml");
         }
-    }
-
-    private void mostrarAlerta(String mensaje) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Información");
-        alert.setHeaderText(null);
-        alert.setContentText(mensaje);
-        alert.showAndWait();
     }
 }
 

@@ -1,18 +1,30 @@
 package com.example.alexandriafrontend.utils;
 
-
-import java.util.Base64;
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
 
 public class JwtUtils {
 
-    public static JsonObject decodificarToken(String jwt) {
-        String[] partes = jwt.split("\\.");
-        if (partes.length < 2) return null;
+    private static final String SECRET_KEY = "aLEXandria2005"; // misma que el backend
 
-        String payloadBase64 = partes[1];
-        String payloadJson = new String(Base64.getUrlDecoder().decode(payloadBase64));
-        return JsonParser.parseString(payloadJson).getAsJsonObject();
+    public static Long obtenerIdDesdeToken(String token) {
+        Claims claims = Jwts.parser()
+                .setSigningKey(SECRET_KEY)
+                .parseClaimsJws(token)
+                .getBody();
+
+        return Long.parseLong(claims.getSubject());
+    }
+
+    public static JsonObject decodificarToken(String token) {
+        Claims claims = Jwts.parser()
+                .setSigningKey(SECRET_KEY)
+                .parseClaimsJws(token)
+                .getBody();
+
+        Gson gson = new Gson();
+        return gson.toJsonTree(claims).getAsJsonObject();
     }
 }

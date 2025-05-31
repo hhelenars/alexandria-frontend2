@@ -1,5 +1,6 @@
 package com.example.alexandriafrontend.controllers;
 
+import com.example.alexandriafrontend.model.Usuario;
 import com.example.alexandriafrontend.utils.Utils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.event.ActionEvent;
 
+import javax.swing.undo.UndoableEditSupport;
 import java.io.IOException;
 
 public class MenuController {
@@ -68,7 +70,7 @@ public class MenuController {
         }
     }
 
-    public void cargarInicioConUsuario(String usuario) {
+    public void cargarInicioConUsuario(Usuario usuario) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/alexandriafrontend/Inicio.fxml"));
             AnchorPane inicioContent = loader.load();
