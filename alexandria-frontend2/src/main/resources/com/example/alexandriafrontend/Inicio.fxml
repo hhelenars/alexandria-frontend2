@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="600" prefWidth="900" stylesheets="@/styles/Inicio.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alexandriafrontend.controllers.InicioController">
+<AnchorPane fx:id="contenido" prefHeight="600" prefWidth="900" stylesheets="@/styles/Inicio.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alexandriafrontend.controllers.InicioController">
 
 	<!-- Botones arriba a la derecha pero con margen izquierdo para que no estén pegados -->
 	<Button fx:id="btnCrearCuenta" layoutX="50.0" layoutY="40.0" onAction="#handleButtonAction" prefHeight="30.0" prefWidth="130.0" styleClass="registrarse-button" text="Registrarse" textFill="WHITE" />

@@ -127,12 +127,28 @@
             <version>2.9.0</version>
         </dependency>
 
+
+        <dependency>
+            <groupId>nl.siegmann.epublib</groupId>
+            <artifactId>epublib-core</artifactId>
+            <version>3.1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/epublib-core-3.1.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.36</version>
+        </dependency>
+
         <!-- Cliente HTTP (OkHttp) que usa Retrofit por debajo -->
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
             <version>4.9.3</version>
         </dependency>
+
     </dependencies>
 
     <build>

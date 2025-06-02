@@ -21,11 +21,35 @@ public class MenuController {
     @FXML private Button btnBiblioteca;
     @FXML private Button btnLecturasCompartidas;
     @FXML private Button btnCerrarSesion;
+    @FXML private AnchorPane menuPane;
+    @FXML private Button btnToggleMenu;
+
+    private boolean menuVisible = true;
 
     @FXML
     private void initialize() {
         cargarContenido("/com/example/alexandriafrontend/Inicio.fxml");
         ocultarOpcionesPrivadas();
+    }
+
+    @FXML
+    private void toggleMenu() {
+
+        if (menuVisible) {
+            // Ocultar menú
+            menuPane.setVisible(false);
+            menuPane.setManaged(false);
+            contentPane.setLayoutX(0);
+            contentPane.setPrefWidth(900);
+        } else {
+            // Mostrar menú
+            menuPane.setVisible(true);
+            menuPane.setManaged(true);
+            contentPane.setLayoutX(264);
+            contentPane.setPrefWidth(636); // 900 - 264
+        }
+
+        menuVisible = !menuVisible;
     }
 
     public void mostrarOpcionesPrivadas() {

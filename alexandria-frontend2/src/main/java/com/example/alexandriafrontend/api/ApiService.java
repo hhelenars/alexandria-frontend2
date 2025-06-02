@@ -32,4 +32,16 @@ public interface ApiService {
 
     @GET("/api/libros/buscar")
     Call<List<LibroResponse>> buscarLibros(@Query("texto") String texto);
+
+    @GET("/api/biblioteca/favoritos")
+    Call<List<LibroResponse>> buscarLibrosFavoritos(@Header("Authorization") String token);
+
+    @GET("/api/biblioteca/lecturas")
+    Call<List<LibroResponse>> buscarLibrosLecturas(@Header("Authorization") String token);
+
+    @GET("/api/libros/archivo-url")
+    Call<ResponseBody> obtenerArchivoUrl(@Query("id") Long id);
+
+    @GET("api/epubs/{nombreArchivo}")
+    Call<ResponseBody> obtenerUrlFirmada(@Path("nombreArchivo") String nombreArchivo);
 }

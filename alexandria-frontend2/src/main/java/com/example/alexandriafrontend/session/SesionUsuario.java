@@ -46,10 +46,6 @@ public class SesionUsuario {
         token = null;
     }
 
-    // Si necesitas obtener el ID desde el token
-    public Long getIdDesdeToken() {
-        return JwtUtils.obtenerIdDesdeToken(token);
-    }
 }
 
 

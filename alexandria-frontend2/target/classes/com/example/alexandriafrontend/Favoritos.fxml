@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600" prefWidth="649.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alexandriafrontend.controllers.FavoritosController">
+<AnchorPane fx:id="contenido" prefHeight="600" prefWidth="649.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alexandriafrontend.controllers.FavoritosController">
    
    <Label layoutX="50.0" layoutY="93.0" styleClass="titulo" text="Tu biblioteca">
       <font>
