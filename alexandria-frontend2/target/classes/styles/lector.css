@@ -13,5 +13,33 @@
     -fx-wrap-text: true;
 }
 
-    -fx-background-color: yellow;
+.barra-subrayado {
+    -fx-padding: 5px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-border-color: #ccc;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.2), 4, 0.5, 0, 2);
+}
+
+.color-amarillo {
+    -fx-fill: black;
+    -rtfx-background-color: yellow;
+}
+
+.color-verde {
+    -fx-fill: black;
+    -rtfx-background-color: lightgreen;
+}
+
+.color-azul {
+    -fx-fill: black;
+    -rtfx-background-color: lightskyblue;
+}
+
+/* Línea baja para indicar comentario */
+.comentado {
+    -fx-underline: true;
+    -fx-border-color: gray;
+    -fx-border-width: 0 0 1.5px 0;
+    -fx-border-style: solid;
 }

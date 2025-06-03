@@ -14,7 +14,6 @@
 }
 
 .barra-subrayado {
-    -fx-background-color: #f4f4f4;
     -fx-padding: 5px;
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
@@ -22,14 +21,25 @@
     -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.2), 4, 0.5, 0, 2);
 }
 
-.subrayado-amarillo {
-    -fx-background-color: yellow;
+.color-amarillo {
+    -fx-fill: black;
+    -rtfx-background-color: yellow;
 }
 
-.subrayado-azul {
-    -fx-background-color: lightblue;
+.color-verde {
+    -fx-fill: black;
+    -rtfx-background-color: lightgreen;
 }
 
-.subrayado-verde {
-    -fx-background-color: lightgreen;
+.color-azul {
+    -fx-fill: black;
+    -rtfx-background-color: lightskyblue;
+}
+
+/* Línea baja para indicar comentario */
+.comentado {
+    -fx-underline: true;
+    -fx-border-color: gray;
+    -fx-border-width: 0 0 1.5px 0;
+    -fx-border-style: solid;
 }
