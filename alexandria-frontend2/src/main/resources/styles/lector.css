@@ -13,6 +13,23 @@
     -fx-wrap-text: true;
 }
 
-.subrayado {
+.barra-subrayado {
+    -fx-background-color: #f4f4f4;
+    -fx-padding: 5px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-border-color: #ccc;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.2), 4, 0.5, 0, 2);
+}
+
+.subrayado-amarillo {
     -fx-background-color: yellow;
+}
+
+.subrayado-azul {
+    -fx-background-color: lightblue;
+}
+
+.subrayado-verde {
+    -fx-background-color: lightgreen;
 }
