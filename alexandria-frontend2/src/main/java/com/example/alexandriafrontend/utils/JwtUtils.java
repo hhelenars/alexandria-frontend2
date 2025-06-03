@@ -9,15 +9,6 @@ public class JwtUtils {
 
     private static final String SECRET_KEY = "aLEXandria2005"; // misma que el backend
 
-    public static Long obtenerIdDesdeToken(String token) {
-        Claims claims = Jwts.parser()
-                .setSigningKey(SECRET_KEY)
-                .parseClaimsJws(token)
-                .getBody();
-
-        return Long.parseLong(claims.getSubject());
-    }
-
     public static JsonObject decodificarToken(String token) {
         Claims claims = Jwts.parser()
                 .setSigningKey(SECRET_KEY)

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.TextFlow?>
+
+<?import javafx.geometry.Insets?>
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.alexandriafrontend.controllers.LectorController"
+            prefWidth="649.0" prefHeight="600">
+
+    <ScrollPane fitToWidth="true" prefHeight="600.0" prefWidth="635.0">
+        <content>
+            <TextFlow fx:id="textFlow">
+                <padding>
+                    <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+                </padding>
+            </TextFlow>
+        </content>
+    </ScrollPane>
+
+</AnchorPane>

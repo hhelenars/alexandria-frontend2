@@ -21,6 +21,7 @@
                 </font>
             </Label>
 
+
             <Label layoutX="37" layoutY="67" styleClass="titulo" text="Menu">
                 <font>
                     <Font name="System Bold" size="14"/>
@@ -69,9 +70,16 @@
         </children>
     </AnchorPane>
 
+
     <!-- Contenedor para cargar contenido dinámico -->
     <AnchorPane fx:id="contentPane"
                 layoutX="264" layoutY="0"
                 prefWidth="636" prefHeight="600"/>
+
+    <Button fx:id="btnToggleMenu"
+            layoutX="10" layoutY="10"
+            text="☰"
+            style="-fx-background-color: transparent; -fx-font-size: 12px;"
+            onAction="#toggleMenu"/>
 </AnchorPane>
 

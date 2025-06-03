@@ -2,13 +2,17 @@ package com.example.alexandriafrontend.controllers;
 
 import com.example.alexandriafrontend.api.ApiClient;
 import com.example.alexandriafrontend.api.ApiService;
+import com.example.alexandriafrontend.model.Libro;
 import com.example.alexandriafrontend.response.LibroResponse;
+import com.example.alexandriafrontend.utils.LectorHelper;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -19,10 +23,13 @@ import java.util.List;
 public class BuscarController {
 
     @FXML
-    private ListView<String> listalibros;
+    private ListView<Libro> listalibros;
 
     @FXML
     private TextField txtBuscar;
+
+    @FXML
+    private AnchorPane contenido;
 
     private ApiService apiService = ApiClient.getApiService();
 
@@ -35,6 +42,15 @@ public class BuscarController {
         txtBuscar.textProperty().addListener((observable, oldValue, newValue) -> {
             filtrarLibros(newValue);
         });
+
+        listalibros.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) {
+                Libro libroSeleccionado = listalibros.getSelectionModel().getSelectedItem();
+                if (libroSeleccionado != null) {
+                    LectorHelper.pedirUrlYMostrarLibro(libroSeleccionado, contenido);
+                }
+            }
+        });
     }
 
     private void cargarLibros() {
@@ -44,8 +60,8 @@ public class BuscarController {
             public void onResponse(Call<List<LibroResponse>> call, Response<List<LibroResponse>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     for (LibroResponse libro : response.body()) {
-                        String item = libro.getTitulo() + " - " + libro.getAutor();
-                        javafx.application.Platform.runLater(() -> listalibros.getItems().add(item));
+                        Libro nuevoLibro = new Libro(libro.getId(), libro.getTitulo(), libro.getAutor());
+                        javafx.application.Platform.runLater(() -> listalibros.getItems().add(nuevoLibro));
                     }
                 } else {
                     System.out.println("Credenciales inválidas. Inténtalo de nuevo.");
@@ -68,15 +84,10 @@ public class BuscarController {
             @Override
             public void onResponse(Call<List<LibroResponse>> call, Response<List<LibroResponse>> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    List<String> items = new ArrayList<>();
                     for (LibroResponse libro : response.body()) {
-                        String item = libro.getTitulo() + " - " + libro.getAutor();
-                        items.add(item);
+                        Libro nuevoLibro = new Libro(libro.getId(), libro.getTitulo(), libro.getAutor());
+                        javafx.application.Platform.runLater(() -> listalibros.getItems().add(nuevoLibro));
                     }
-                    Platform.runLater(() -> {
-                        listalibros.getItems().clear();
-                        listalibros.getItems().addAll(items);
-                    });
                 } else {
                     System.out.println("Credenciales inválidas. Inténtalo de nuevo.");
                 }
