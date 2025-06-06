@@ -150,7 +150,7 @@ public class LectorController {
         TextInputDialog dialogo = new TextInputDialog();
         dialogo.setTitle("Nuevo comentario");
         dialogo.setHeaderText("Introduce el comentario asociado al subrayado");
-        dialogo.setContentText("Comentario:");
+        dialogo.setContentText("Comentario: ");
 
         Optional<String> resultado = dialogo.showAndWait();
 
