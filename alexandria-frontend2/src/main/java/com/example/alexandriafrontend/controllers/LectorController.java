@@ -1,6 +1,10 @@
 package com.example.alexandriafrontend.controllers;
 
+import com.example.alexandriafrontend.api.ApiClient;
+import com.example.alexandriafrontend.api.ApiService;
 import com.example.alexandriafrontend.model.Anotacion;
+import com.example.alexandriafrontend.request.AnotacionesRequest;
+import com.example.alexandriafrontend.session.SesionUsuario;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
@@ -13,12 +17,14 @@ import nl.siegmann.epublib.domain.Book;
 import nl.siegmann.epublib.domain.Resource;
 import nl.siegmann.epublib.epub.EpubReader;
 import org.fxmisc.richtext.StyleClassedTextArea;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class LectorController {
 
@@ -29,6 +35,12 @@ public class LectorController {
     private StyleClassedTextArea textArea;
 
     private final List<Anotacion> anotaciones = new ArrayList<>();
+
+   private Long libroId;
+
+    public void setIdLibro(Long libroId) {
+        this.libroId = libroId;
+    }
 
     @FXML
     private void subrayarAmarillo() {
@@ -87,6 +99,7 @@ public class LectorController {
             protected Void call() throws Exception {
                 String textoPlano = leerYProcesarLibro(urlFirmada);
                 Platform.runLater(() -> mostrarTextoEnArea(textoPlano));
+                cargarAnotaciones();
                 return null;
             }
             @Override
@@ -116,6 +129,11 @@ public class LectorController {
 
             textArea.setStyle(i, i + 1, nuevosEstilos);
         }
+
+        List<String> estilos = new ArrayList<>(textArea.getStyleOfChar(start));
+        Anotacion subrayadoSimple = new Anotacion(start, end, estilos, null);
+
+        anotaciones.add(subrayadoSimple);
     }
 
 
@@ -147,8 +165,8 @@ public class LectorController {
                 textArea.setStyle(i, i + 1, estilos);
             }
 
-            // Guarda la anotación para la base de datos
-            Anotacion nueva = new Anotacion(start, end, "comentado", comentario);
+            List<String> estilos = new ArrayList<>(textArea.getStyleOfChar(start));
+            Anotacion nueva = new Anotacion(start, end, estilos, comentario);
             anotaciones.add(nueva);
         });
 
@@ -185,4 +203,83 @@ public class LectorController {
             }
         });
     }
+    @FXML
+    private void guardarAnotaciones() {
+
+        String token = SesionUsuario.getInstancia().getToken(); // 👈 así lo coges
+        if (libroId == null || token == null) {
+            System.out.println("No se puede guardar: libroId o token nulo");
+            return;
+        }
+
+        AnotacionesRequest request = new AnotacionesRequest();
+
+        request.setLibroId(libroId);
+
+        // En este ejemplo todo va en la página 0, puedes cambiarlo si usas más páginas
+        Map<Integer, List<Anotacion>> mapa = new HashMap<>();
+        mapa.put(0, new ArrayList<>(anotaciones)); // lista ya generada con tus anotaciones
+        request.setAnotaciones(mapa);
+
+        ApiService apiService =  ApiClient.getApiService();
+        Call<Void> call = apiService.guardarAnotaciones("Bearer " + token ,request);
+
+        call.enqueue(new Callback<>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    System.out.println("Anotaciones guardadas con éxito");
+                } else {
+                    System.out.println("Error al guardar anotaciones: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                t.printStackTrace();
+                System.out.println("Fallo en la conexión al guardar anotaciones");
+            }
+        });
+    }
+
+    public void cargarAnotaciones() {
+        String token = SesionUsuario.getInstancia().getToken();
+        if (libroId == null || token == null) {
+            System.out.println("No se pueden cargar anotaciones: libroId o token nulo");
+            return;
+        }
+
+        ApiService apiService = ApiClient.getApiService();
+        Call<Map<Integer, List<Anotacion>>> call = apiService.obtenerAnotaciones("Bearer " + token, libroId);
+
+        call.enqueue(new Callback<>() {
+            @Override
+            public void onResponse(Call<Map<Integer, List<Anotacion>>> call, Response<Map<Integer, List<Anotacion>>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    Map<Integer, List<Anotacion>> mapa = response.body();
+                    List<Anotacion> anotacionesRecibidas = mapa.getOrDefault(0, new ArrayList<>()); // página 0
+
+                    Platform.runLater(() -> {
+                        for (Anotacion a : anotacionesRecibidas) {
+                            for (int i = a.getStart(); i < a.getEnd(); i++) {
+                                textArea.setStyle(i, i + 1, a.getEstilos());
+                            }
+                            anotaciones.add(a); // añadimos al array local para mostrar tooltip
+                        }
+                        System.out.println("📝 Anotaciones cargadas y aplicadas.");
+                    });
+
+                } else {
+                    System.out.println("No se encontraron anotaciones o error: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Map<Integer, List<Anotacion>>> call, Throwable t) {
+                t.printStackTrace();
+                System.out.println("Fallo al conectar para recuperar anotaciones.");
+            }
+        });
+    }
+
 }

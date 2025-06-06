@@ -4,6 +4,7 @@ import com.example.alexandriafrontend.api.ApiClient;
 import com.example.alexandriafrontend.api.ApiService;
 import com.example.alexandriafrontend.controllers.LectorController;
 import com.example.alexandriafrontend.model.Libro;
+import com.example.alexandriafrontend.session.SesionUsuario;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -99,13 +100,30 @@ public class LectorHelper {
 
 
     public static void pedirUrlYMostrarLibro(Libro libro, AnchorPane contenido) {
+
+        apiService.registrarLectura("Bearer " + SesionUsuario.getInstancia().getToken(), libro.getId()).enqueue(new Callback<>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                System.out.println("Lectura registrada correctamente.");
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                System.err.println("Error al registrar lectura:");
+                t.printStackTrace();
+            }
+        });
+
         obtenerArchivoUrlPorId(libro.getId(), archivoNombre -> {
             if (archivoNombre != null) {
                 obtenerUrlFirmada(archivoNombre, urlFirmada -> {
                     if (urlFirmada != null) {
                         Platform.runLater(() -> {
                             cargarPantalla(contenido, "/com/example/alexandriafrontend/Lector.fxml",
-                                    (LectorController controller) -> controller.cargarLibroDesdeURL(urlFirmada));
+                                    (LectorController controller) -> {
+                                        controller.setIdLibro(libro.getId());
+                                        controller.cargarLibroDesdeURL(urlFirmada);
+                                    });
                         });
                     }
                 });

@@ -1,5 +1,7 @@
 package com.example.alexandriafrontend.api;
 
+import com.example.alexandriafrontend.model.Anotacion;
+import com.example.alexandriafrontend.request.AnotacionesRequest;
 import com.example.alexandriafrontend.response.LibroResponse;
 import com.example.alexandriafrontend.response.LoginResponse;
 
@@ -8,6 +10,7 @@ import retrofit2.Call;
 import retrofit2.http.*;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ApiService {
 
@@ -44,4 +47,16 @@ public interface ApiService {
 
     @GET("api/epubs/{nombreArchivo}")
     Call<ResponseBody> obtenerUrlFirmada(@Path("nombreArchivo") String nombreArchivo);
+
+    @POST("/api/biblioteca/enlectura")
+    Call<Void> registrarLectura(@Header("Authorization") String token, @Query("libroId") Long libroId);
+
+    @POST("/api/biblioteca/guardar-anotaciones")
+    Call<Void> guardarAnotaciones(@Header("Authorization") String token, @Body AnotacionesRequest request);
+
+    @GET("/api/biblioteca/recuperar-anotaciones")
+    Call<Map<Integer, List<Anotacion>>> obtenerAnotaciones(@Header("Authorization") String token, @Query("libroId") Long libroId);
+
+
+
 }

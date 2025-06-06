@@ -22,6 +22,7 @@
             <Button text="Verde" onAction="#subrayarVerde"/>
             <Button text="Sin subraydo" onAction="#quitarSubrayado"/>
             <Button text="Agregar comentario" onAction="#agregarComentario"/>
+            <Button fx:id="btnGuardarAnotaciones" text="Guardar anotaciones" onAction="#guardarAnotaciones"/>
         </HBox>
 
 
