@@ -54,7 +54,6 @@ public class LectorHelper {
     }
 
     public static void obtenerUrlFirmada(String archivoNombre, Consumer<String> callback) {
-        archivoNombre = "la_celestina.epub";
         Call<ResponseBody> call = apiService.obtenerUrlFirmada(archivoNombre);
 
         call.enqueue(new Callback<>() {
