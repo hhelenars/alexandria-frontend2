@@ -140,3 +140,19 @@
 .style-classed-text-area .selection {
     -fx-background-color: #A3D8F4bb; /* azul claro */
 }
+
+.anotacion-yellow {
+    -fx-background-color: #fff59d;
+    -fx-text-fill: #23272F;
+    -fx-font-weight: 700;
+}
+.anotacion-blue {
+    -fx-background-color: #bbe5ff;
+    -fx-text-fill: #23272F;
+    -fx-font-weight: 700;
+}
+.anotacion-green {
+    -fx-background-color: #b6f7e1;
+    -fx-text-fill: #23272F;
+    -fx-font-weight: 700;
+}

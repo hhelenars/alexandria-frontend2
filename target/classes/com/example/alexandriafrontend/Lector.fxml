@@ -16,9 +16,9 @@
 
         <!-- Menú superior de botones -->
         <HBox fx:id="barraFlotante" spacing="14" styleClass="barra-flotante">
-            <Button text="🟨 Amarillo" onAction="#subrayarAmarillo" styleClass="anotacion-yellow"/>
-            <Button text="🟦 Azul" onAction="#subrayarAzul" styleClass="anotacion-blue"/>
-            <Button text="🟩 Verde" onAction="#subrayarVerde" styleClass="anotacion-green"/>
+            <Button text="Amarillo" onAction="#subrayarAmarillo" styleClass="anotacion-yellow"/>
+            <Button text="Azul" onAction="#subrayarAzul" styleClass="anotacion-blue"/>
+            <Button text="Verde" onAction="#subrayarVerde" styleClass="anotacion-green"/>
             <Button text="✖ Sin subrayado" onAction="#quitarSubrayado" styleClass="anotacion-clear"/>
             <Button text="💬 Comentario" onAction="#agregarComentario" styleClass="anotacion-comment"/>
             <Button fx:id="btnGuardarAnotaciones" text="💾 Guardar" onAction="#guardarAnotaciones" styleClass="anotacion-save"/>
@@ -26,7 +26,8 @@
 
 
 
-    <StyleClassedTextArea fx:id="textArea"
+
+        <StyleClassedTextArea fx:id="textArea"
                           wrapText="true"
                           VBox.vgrow="ALWAYS" />
 
