@@ -10,7 +10,6 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.alexandriafrontend.controllers.RegistroController">
 
-   <!-- Título principal -->
    <Label layoutX="220.0" layoutY="65.0" prefHeight="51.0" prefWidth="460.0"
           text="Alexandria" alignment="CENTER">
       <font>
@@ -26,11 +25,9 @@
       </font>
    </Label>
 
-   <!-- Instrucción -->
    <Label layoutX="338.0" layoutY="165.0" prefHeight="25.0" prefWidth="225.0"
           text="Introduce tus datos para registrarte" alignment="CENTER"/>
 
-   <!-- Campos del formulario -->
    <TextField fx:id="tfPrimer_Nombre"
               layoutX="264.0" layoutY="206.0"
               prefHeight="35.0" prefWidth="365.0"
@@ -51,13 +48,11 @@
               prefHeight="35.0" prefWidth="365.0"
               promptText="Contraseña"/>
 
-   <!-- Rol -->
    <ComboBox fx:id="cbRol"
              layoutX="264.0" layoutY="395.0"
              prefHeight="35.0" prefWidth="365.0"
              promptText="Selecciona un rol"/>
 
-   <!-- Botón Registrarse -->
    <Button fx:id="btnRegistrarse"
            layoutX="264.0" layoutY="445.0"
            prefHeight="35.0" prefWidth="365.0"

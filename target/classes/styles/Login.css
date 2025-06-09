@@ -1,9 +1,8 @@
-/* Fondo principal del login */
+
 #rootPane {
     -fx-background-color: linear-gradient(to bottom right, #181E29 85%, #202736 100%);
 }
 
-/* Título principal (Alexandria) */
 .label {
     -fx-font-family: "Segoe UI", "Roboto", "Arial", sans-serif;
     -fx-font-weight: 600;
@@ -16,19 +15,16 @@
     -fx-text-fill: #F7FAFC;
 }
 
-/* Subtítulo */
 .label[alignment="CENTER"][text="Iniciar Sesión"] {
     -fx-font-size: 16px;
     -fx-text-fill: #4FD1C5;
 }
 
-/* Descripción */
 .label[alignment="CENTER"][text*="email"] {
     -fx-font-size: 13px;
     -fx-text-fill: #CBD5E1;
 }
 
-/* TextFields modernos */
 .text-field {
     -fx-background-color: #232C3A, #181E29;
     -fx-background-insets: 0, 1;
@@ -50,7 +46,6 @@
     -fx-background-color: #232C3A;
 }
 
-/* Botón de iniciar sesión moderno */
 #btnIniciarSesion {
     -fx-background-color: linear-gradient(to right, #319795, #38B2AC);
     -fx-text-fill: #FFF;
@@ -73,7 +68,6 @@
     -fx-scale-y: 1.03;
 }
 
-/* Botón Volver, más neutro pero elegante */
 #btnVolver {
     -fx-background-color: transparent;
     -fx-border-color: #4FD1C5;
@@ -97,8 +91,6 @@
     -fx-border-color: #63B3ED;
 }
 
-
-/* Label explicativo inferior */
 .label[text*="En caso de no tener"] {
     -fx-font-size: 13px;
     -fx-text-fill: #A0AEC0;
@@ -115,7 +107,6 @@
     -fx-cursor: hand;
 }
 
-/* Responsive para pantallas más pequeñas */
 @font-face {
     font-family: "Segoe UI";
     src: local("Segoe UI"), local("Roboto"), local("Arial"), local("sans-serif");

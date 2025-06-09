@@ -1,17 +1,14 @@
-/* Fondo elegante del menú */
+
 #menuPane {
-    /* Fondo oscuro azulado, diferente del contenido */
+
     -fx-background-color: linear-gradient(to bottom, #181E29 90%, #232C3A 100%);
     -fx-pref-width: 264px;
-    /* Sombra exterior clara hacia la derecha */
     -fx-effect: dropshadow(gaussian, rgba(32,50,85,0.18), 26, 0.20, 10, 0);
-    /* Línea azul-oscura como borde */
     -fx-border-width: 0 2px 0 0;
     -fx-border-color: #26304b;
     -fx-padding: 0;
 }
 
-/* Subtítulo */
 #menuPane .label.seccion {
     -fx-font-size: 15px;
     -fx-font-weight: 600;
@@ -20,13 +17,11 @@
     -fx-letter-spacing: 1px;
 }
 
-/* VBox de botones: separación automática */
 #vboxMenu {
     -fx-padding: 10px 0 0 0;
     -fx-spacing: 8px;
 }
 
-/* Botones base del menú */
 .menu-button {
     -fx-background-color: transparent;
     -fx-text-fill: #D7E2EE;
@@ -41,7 +36,6 @@
     -fx-transition: all 0.18s;
 }
 
-/* Botón activo/seleccionado */
 .menu-button:focused, .menu-button:selected {
     -fx-background-color: #3A4152;
     -fx-text-fill: #4FD1C5;
@@ -51,7 +45,6 @@
     -fx-effect: dropshadow(gaussian, rgba(79,209,197,0.07), 7, 0.09, 0, 1);
 }
 
-/* Hover */
 .menu-button:hover {
     -fx-background-color: #2D3748;
     -fx-text-fill: #63B3ED;
@@ -74,14 +67,13 @@
     -fx-text-fill: #FFD6D6;
 }
 
-/* Título principal: solo para el label con fx:id="lblMenuTitulo" */
 #lblMenuTitulo {
     -fx-font-family: "Segoe UI", "Roboto", "Arial", sans-serif;
-    -fx-font-size: 20px;           /* Un poco menor para que no grite */
-    -fx-font-weight: 700;          /* Igual que los botones, no más */
-    -fx-text-fill: #D7E2EE;        /* El mismo tono que los botones por defecto */
-    -fx-padding: 6 0 6 38;         /* El mismo padding izquierdo que los botones */
-    -fx-letter-spacing: 0.2px;     /* Muy ligero, casi igual que los botones */
+    -fx-font-size: 20px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #D7E2EE;
+    -fx-padding: 6 0 6 38;
+    -fx-letter-spacing: 0.2px;
     -fx-effect: null;
 }
 

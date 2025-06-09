@@ -1,9 +1,8 @@
-/* Fondo principal del registro */
+
 #rootPane {
     -fx-background-color: linear-gradient(to bottom right, #181E29 85%, #202736 100%);
 }
 
-/* Títulos */
 .label {
     -fx-font-family: "Segoe UI", "Roboto", "Arial", sans-serif;
     -fx-font-weight: 600;
@@ -16,19 +15,16 @@
     -fx-text-fill: #F7FAFC;
 }
 
-/* Subtítulo */
 .label[alignment="CENTER"][text="Crear una cuenta"] {
     -fx-font-size: 16px;
     -fx-text-fill: #4FD1C5;
 }
 
-/* Instrucción */
 .label[alignment="CENTER"][text*="Introduce tus datos"] {
     -fx-font-size: 13px;
     -fx-text-fill: #CBD5E1;
 }
 
-/* Campos de texto modernos */
 .text-field {
     -fx-background-color: #232C3A, #181E29;
     -fx-background-insets: 0, 1;
@@ -49,7 +45,6 @@
     -fx-background-color: #232C3A;
 }
 
-/* ComboBox estilo pro */
 .combo-box, .combo-box-base {
     -fx-background-color: #232C3A, #181E29;
     -fx-background-insets: 0, 1;
@@ -70,7 +65,6 @@
     -fx-background-color: #4FD1C5;
 }
 
-/* Botón Registrarse moderno */
 #btnRegistrarse {
     -fx-background-color: linear-gradient(to right, #319795, #38B2AC);
     -fx-text-fill: #FFF;
@@ -92,7 +86,6 @@
     -fx-scale-y: 1.03;
 }
 
-/* Botón Volver igual que en login */
 #btnVolver {
     -fx-background-color: transparent;
     -fx-border-color: #4FD1C5;

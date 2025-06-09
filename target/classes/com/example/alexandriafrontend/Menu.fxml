@@ -7,16 +7,15 @@
 
 <AnchorPane fx:id="rootPane" prefHeight="600" prefWidth="900" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alexandriafrontend.controllers.MenuController">
 
-    <!-- Menú lateral profesional -->
+
     <AnchorPane fx:id="menuPane" prefHeight="600" prefWidth="264">
         <children>
-            <!-- Título principal -->
+
             <Label fx:id="lblMenuTitulo" layoutX="32" layoutY="36" text="Biblioteca"/>
 
-            <!-- Subtítulo menú -->
+
             <Label layoutX="14.0" layoutY="76.0" styleClass="seccion" text="Menú" />
 
-            <!-- VBox con separación entre botones -->
             <VBox fx:id="vboxMenu" layoutX="0" layoutY="110" prefWidth="264" spacing="10">
                 <children>
                     <Button fx:id="btnHome" onAction="#handleMenuAction"
@@ -46,9 +45,7 @@
         </children>
     </AnchorPane>
 
-    <!-- Contenedor para cargar contenido dinámico -->
     <AnchorPane fx:id="contentPane" layoutX="264" layoutY="0" prefHeight="600" prefWidth="636" />
 
-    <!-- Botón hamburguesa para mostrar/ocultar menú -->
     <Button fx:id="btnToggleMenu" layoutX="10" layoutY="10" onAction="#toggleMenu" style="-fx-background-color: transparent; -fx-font-size: 18px;" text="☰" />
 </AnchorPane>

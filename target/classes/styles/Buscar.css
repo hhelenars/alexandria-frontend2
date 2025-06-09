@@ -4,7 +4,6 @@
     -fx-effect: dropshadow(gaussian, rgba(44,56,80,0.13), 20, 0.12, 0, 5);
 }
 
-/* TODOS los labels y títulos */
 .label, .titulo {
     -fx-font-family: "Segoe UI", "Roboto", "Arial", sans-serif;
     -fx-font-weight: 700;
@@ -12,19 +11,16 @@
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.09), 0, 0.08, 0, 1);
 }
 
-/* Título principal (31px por defecto en FXML) */
 .titulo {
     -fx-font-size: 31px;
 }
 
-/* Subtítulo (18px, cyan) */
 .titulo[text="Resultados"], .titulo[text="Favoritos"], .titulo[text="Crear una cuenta"], .titulo[text="Bienvenido a Alexandria"] {
     -fx-font-size: 18px;
     -fx-text-fill: #4FD1C5;
     -fx-font-weight: 600;
 }
 
-/* Subtítulo pequeño, gris */
 .titulo[text="Todos los libros que te han gustado"], .titulo[text*="libros recomendados"], .titulo[text*="Introduce tus datos"] {
     -fx-font-size: 12px;
     -fx-text-fill: #A0AEC0;
@@ -32,7 +28,6 @@
     -fx-padding: 2 0 0 0;
 }
 
-/* Campo de búsqueda */
 .custom-textfield, .text-field {
     -fx-background-color: #232C3A, #181E29;
     -fx-background-insets: 0, 1;
@@ -53,7 +48,6 @@
     -fx-background-color: #232C3A;
 }
 
-/* Lista de resultados */
 .list-view {
     -fx-background-color: #23272F;
     -fx-border-color: #2D3748;
@@ -84,7 +78,6 @@
     -fx-effect: dropshadow(gaussian, rgba(99,179,237,0.14), 4, 0.10, 0, 1);
 }
 
-/* Scrollbar pro */
 .list-view .scroll-bar:vertical {
     -fx-background-color: transparent;
 }
@@ -94,7 +87,6 @@
     -fx-pref-width: 8px;
 }
 
-/* Ajuste general para labels secundarios */
 .label {
     -fx-font-family: "Segoe UI", "Roboto", "Arial", sans-serif;
     -fx-text-fill: #E2E8F0;

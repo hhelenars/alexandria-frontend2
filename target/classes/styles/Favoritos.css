@@ -1,10 +1,9 @@
-/* Fondo principal */
+
 #contenido {
     -fx-background-color: linear-gradient(to bottom right, #181E29 85%, #202736 100%);
     -fx-effect: dropshadow(gaussian, rgba(44,56,80,0.13), 20, 0.12, 0, 5);
 }
 
-/* Título principal */
 .titulo {
     -fx-font-family: "Segoe UI", "Roboto", "Arial", sans-serif;
     -fx-font-size: 31px;
@@ -21,7 +20,6 @@
     -fx-text-fill: #4FD1C5;
 }
 
-/* Descripción o texto pequeño */
 .descripcion {
     -fx-font-family: "Segoe UI", "Roboto", "Arial", sans-serif;
     -fx-font-size: 13px;
@@ -30,7 +28,6 @@
     -fx-padding: 3 0 0 0;
 }
 
-/* ListView de favoritos */
 .list-view {
     -fx-background-color: #23272F;
     -fx-border-color: #2D3748;
@@ -41,7 +38,6 @@
     -fx-effect: dropshadow(gaussian, rgba(44,56,80,0.09), 8, 0.11, 0, 1);
 }
 
-/* Cada libro favorito */
 .list-cell {
     -fx-background-color: transparent;
     -fx-text-fill: #CBD5E1;
@@ -61,7 +57,6 @@
     -fx-effect: dropshadow(gaussian, rgba(99,179,237,0.13), 4, 0.10, 0, 1);
 }
 
-/* Scrollbar pro */
 .list-view .scroll-bar:vertical {
     -fx-background-color: transparent;
 }
@@ -71,7 +66,6 @@
     -fx-pref-width: 8px;
 }
 
-/* Ajuste general para labels secundarios */
 .label {
     -fx-font-family: "Segoe UI", "Roboto", "Arial", sans-serif;
     -fx-text-fill: #E2E8F0;
