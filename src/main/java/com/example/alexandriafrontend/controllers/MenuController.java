@@ -100,8 +100,8 @@ public class MenuController {
             Utils.cambiarPantalla(
                     stage,
                     "/com/example/alexandriafrontend/Login.fxml",
-                    "/styles/Login.css",       // Aquí la ruta a tu CSS de login
-                    c -> {}                    // Lambda vacío porque no necesitas lógica extra
+                    "/styles/Login.css",
+                    c -> {}                    
             );
 
             System.out.println("Sesión cerrada. Redirigiendo al login.");
