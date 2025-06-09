@@ -83,11 +83,11 @@ public class MenuController {
         }
         else if (source == btnBuscar) {
             cargarContenido("/com/example/alexandriafrontend/Buscar.fxml","/styles/Buscar.css");
-        } /* else if (source == btnFavoritos) {
-            cargarContenido("/com/example/alexandriafrontend/Favoritos.fxml");
+        }  else if (source == btnFavoritos) {
+            cargarContenido("/com/example/alexandriafrontend/Favoritos.fxml","/styles/Favoritos.css");
         } else if (source == btnBiblioteca) {
-            cargarContenido("/com/example/alexandriafrontend/MiBiblioteca.fxml");
-        } else if (source == btnLecturasCompartidas) {
+            cargarContenido("/com/example/alexandriafrontend/MiBiblioteca.fxml","/styles/MiBiblioteca.css");
+        }/*  else if (source == btnLecturasCompartidas) {
             cargarContenido("/com/example/alexandriafrontend/LecturasCompartidas.fxml");
         } else if (source == btnCerrarSesion) {
             // Aquí podrías gestionar cerrar sesión y volver al login
