@@ -11,18 +11,26 @@ import java.util.function.Consumer;
 
 public class Utils {
 
-    public static <T> void cambiarPantalla(Stage stage, String rutaFXML, Consumer<T> controladorAccion) {
+    public static <T> void cambiarPantalla(Stage stage, String rutaFXML, String rutaCSS, Consumer<T> controladorAccion) {
         try {
             FXMLLoader loader = new FXMLLoader(Utils.class.getResource(rutaFXML));
             Parent root = loader.load();
-            T controller = loader.getController(); // recupera el controller
-            controladorAccion.accept(controller);  // aplica la lógica que tú decidas
-            stage.setScene(new Scene(root));
+            T controller = loader.getController();
+            controladorAccion.accept(controller);
+            Scene scene = new Scene(root);
+
+            // Añade el CSS si se ha pasado
+            if (rutaCSS != null && !rutaCSS.isEmpty()) {
+                scene.getStylesheets().add(Utils.class.getResource(rutaCSS).toExternalForm());
+            }
+
+            stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
     public static void cargarPantalla(AnchorPane contenedor, String rutaFXML, String rutaCSS) {
         try {

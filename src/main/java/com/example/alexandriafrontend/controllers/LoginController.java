@@ -62,10 +62,15 @@ public class LoginController {
 					System.out.println("Login correcto. Bienvenido " + response.body().getPrimerNombre());
 					Platform.runLater(() -> {
 						Stage stage = (Stage) btnIniciarSesion.getScene().getWindow();
-						Utils.cambiarPantalla(stage, "/com/example/alexandriafrontend/Menu.fxml", (MenuController m) -> {
-							m.mostrarOpcionesPrivadas();
-							m.cargarInicioConUsuario(SesionUsuario.getInstancia().getUsuarioActual());
-						});
+						Utils.cambiarPantalla(
+								stage,
+								"/com/example/alexandriafrontend/Menu.fxml",
+								"/styles/menu.css", // Pon aquí la ruta a tu CSS del menú
+								(MenuController m) -> {
+									m.mostrarOpcionesPrivadas();
+									m.cargarInicioConUsuario(SesionUsuario.getInstancia().getUsuarioActual());
+								}
+						);
 					});
 
 				} else {
@@ -93,7 +98,12 @@ public class LoginController {
 	@FXML
 	private void volverAlInicio() {
 		Stage stage = (Stage) btnVolver.getScene().getWindow();
-		Utils.cambiarPantalla(stage, "/com/example/alexandriafrontend/Menu.fxml", c -> {});
+		Utils.cambiarPantalla(
+				stage,
+				"/com/example/alexandriafrontend/Menu.fxml",
+				"/styles/menu.css", // Ruta al CSS del menú
+				c -> {}
+		);
 		System.out.println("Cargando Inicio.fxml");
 	}
 }

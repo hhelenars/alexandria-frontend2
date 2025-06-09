@@ -80,10 +80,10 @@ public class MenuController {
 
         if (source == btnHome) {
             cargarContenido("/com/example/alexandriafrontend/Inicio.fxml", "/styles/Inicio.css");
-        } /*
+        }
         else if (source == btnBuscar) {
-            cargarContenido("/com/example/alexandriafrontend/Buscar.fxml");
-        } else if (source == btnFavoritos) {
+            cargarContenido("/com/example/alexandriafrontend/Buscar.fxml","/styles/Buscar.css");
+        } /* else if (source == btnFavoritos) {
             cargarContenido("/com/example/alexandriafrontend/Favoritos.fxml");
         } else if (source == btnBiblioteca) {
             cargarContenido("/com/example/alexandriafrontend/MiBiblioteca.fxml");
@@ -92,8 +92,8 @@ public class MenuController {
         } else if (source == btnCerrarSesion) {
             // Aquí podrías gestionar cerrar sesión y volver al login
             System.out.println("Cerrar sesión pulsado");
-        }
-        */
+        } */
+
     }
 
     public void cargarInicioConUsuario(Usuario usuario) {

@@ -73,7 +73,12 @@ public class RegistroController {
                     System.out.println("Usuario registrado correctamente");
                     Platform.runLater(() -> {
                         Stage stage = (Stage) btnRegistrarse.getScene().getWindow();
-                        Utils.cambiarPantalla(stage, "/com/example/alexandriafrontend/Login.fxml", c -> {});
+                        Utils.cambiarPantalla(
+                                stage,
+                                "/com/example/alexandriafrontend/Login.fxml",
+                                "/styles/Login.css", // Aquí tu CSS para Login
+                                c -> {}
+                        );
                         System.out.println("Cargando Login.fxml");
                     });
                 } else {
@@ -100,7 +105,12 @@ public class RegistroController {
     @FXML
     private void volverAlInicio() {
         Stage stage = (Stage) btnVolver.getScene().getWindow();
-        Utils.cambiarPantalla(stage, "/com/example/alexandriafrontend/Menu.fxml", c -> {});
+        Utils.cambiarPantalla(
+                stage,
+                "/com/example/alexandriafrontend/Menu.fxml",
+                "/styles/menu.css", // Ruta al CSS del menú
+                c -> {}
+        );
         System.out.println("Cargando Inicio.fxml");
     }
 

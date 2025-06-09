@@ -96,11 +96,11 @@ public class InicioController {
 
         if (source == btnIniciarSesion) {
             Stage stage = (Stage) btnIniciarSesion.getScene().getWindow();
-            Utils.cambiarPantalla(stage, "/com/example/alexandriafrontend/Login.fxml",controller -> {});
+            Utils.cambiarPantalla(stage, "/com/example/alexandriafrontend/Login.fxml", "/styles/Login.css", controller -> {});
             System.out.println("Cargando Login.fxml");
         } else if (source == btnCrearCuenta) {
             Stage stage = (Stage) btnCrearCuenta.getScene().getWindow();
-            Utils.cambiarPantalla(stage, "/com/example/alexandriafrontend/Registro.fxml", controller -> {});
+            Utils.cambiarPantalla(stage, "/com/example/alexandriafrontend/Registro.fxml", "/styles/Registro.css", controller -> {});
             System.out.println("Cargando Registro.fxml");
         }
     }

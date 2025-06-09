@@ -52,12 +52,6 @@
            prefHeight="30.0" prefWidth="130.0"
            text="⟵ Volver"
            onAction="#volverAlInicio"
-           style="-fx-background-color: #f4f4f4;
-               -fx-border-color: #bbb;
-               -fx-border-radius: 5;
-               -fx-background-radius: 5;
-               -fx-font-size: 12px;
-               -fx-text-fill: #333;
-               -fx-cursor: hand;" />
+            />
 
 </AnchorPane>

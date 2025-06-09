@@ -67,15 +67,17 @@
     -fx-scale-y: 1.03;
 }
 
-/* Botón cerrar sesión especial */
-.cerrar-sesion {
+.menu-button.cerrar-sesion {
     -fx-background-color: #F56565;
     -fx-text-fill: #FFF;
     -fx-font-weight: bold;
     -fx-background-radius: 10px;
     -fx-effect: dropshadow(gaussian, rgba(230,62,62,0.11), 8, 0.12, 0, 1);
+    -fx-padding: 12px 0 12px 38px;
+    -fx-border-width: 0;
 }
-.cerrar-sesion:hover {
+
+.menu-button.cerrar-sesion:hover {
     -fx-background-color: #C53030;
     -fx-text-fill: #FFD6D6;
 }
