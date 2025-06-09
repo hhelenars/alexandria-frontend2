@@ -46,7 +46,7 @@
               prefHeight="35.0" prefWidth="365.0"
               promptText="email@ejemplo.com"/>
 
-   <TextField fx:id="tfContraseña"
+   <PasswordField  fx:id="tfContraseña"
               layoutX="264.0" layoutY="348.0"
               prefHeight="35.0" prefWidth="365.0"
               promptText="Contraseña"/>

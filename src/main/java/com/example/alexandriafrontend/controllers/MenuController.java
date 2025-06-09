@@ -87,12 +87,12 @@ public class MenuController {
             cargarContenido("/com/example/alexandriafrontend/Favoritos.fxml","/styles/Favoritos.css");
         } else if (source == btnBiblioteca) {
             cargarContenido("/com/example/alexandriafrontend/MiBiblioteca.fxml","/styles/MiBiblioteca.css");
-        }/*  else if (source == btnLecturasCompartidas) {
-            cargarContenido("/com/example/alexandriafrontend/LecturasCompartidas.fxml");
+        }  else if (source == btnLecturasCompartidas) {
+            cargarContenido("/com/example/alexandriafrontend/LecturasCompartidas.fxml","/styles/LecturasCompartidas.css");
         } else if (source == btnCerrarSesion) {
             // Aquí podrías gestionar cerrar sesión y volver al login
             System.out.println("Cerrar sesión pulsado");
-        } */
+        }
 
     }
 

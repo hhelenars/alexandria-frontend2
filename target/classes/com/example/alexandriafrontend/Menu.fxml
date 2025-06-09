@@ -11,7 +11,7 @@
     <AnchorPane fx:id="menuPane" prefHeight="600" prefWidth="264">
         <children>
             <!-- Título principal -->
-            <Label layoutX="32" layoutY="36" styleClass="titulo" text="Biblioteca" />
+            <Label fx:id="lblMenuTitulo" layoutX="32" layoutY="36" text="Biblioteca"/>
 
             <!-- Subtítulo menú -->
             <Label layoutX="14.0" layoutY="76.0" styleClass="seccion" text="Menú" />

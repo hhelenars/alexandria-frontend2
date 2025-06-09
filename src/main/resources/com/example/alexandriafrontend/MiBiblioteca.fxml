@@ -12,12 +12,12 @@
             <Font name="System Bold" size="31.0" />
         </font>
     </Label>
-    <Label layoutX="62.0" layoutY="148.0" styleClass="titulo" text="Libros">
+    <Label layoutX="50.0" layoutY="139.0" styleClass="subtitulo" text="Libros">
         <font>
             <Font name="System Bold" size="18.0" />
         </font>
     </Label>
-    <Label layoutX="62.0" layoutY="175.0" styleClass="titulo" text="Seguir leyendo ...">
+    <Label layoutX="50.0" layoutY="175.0" prefHeight="16.0" prefWidth="107.0" styleClass="descripcion" text="Seguir leyendo ...">
         <font>
             <Font size="11.0" />
         </font>

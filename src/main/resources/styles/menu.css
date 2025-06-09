@@ -11,14 +11,6 @@
     -fx-padding: 0;
 }
 
-/* Título principal */
-#menuPane .label.titulo {
-    -fx-font-size: 22px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #F7FAFC;
-    -fx-padding: 0 0 6px 6px;
-}
-
 /* Subtítulo */
 #menuPane .label.seccion {
     -fx-font-size: 15px;
@@ -81,4 +73,16 @@
     -fx-background-color: #C53030;
     -fx-text-fill: #FFD6D6;
 }
+
+/* Título principal: solo para el label con fx:id="lblMenuTitulo" */
+#lblMenuTitulo {
+    -fx-font-family: "Segoe UI", "Roboto", "Arial", sans-serif;
+    -fx-font-size: 20px;           /* Un poco menor para que no grite */
+    -fx-font-weight: 700;          /* Igual que los botones, no más */
+    -fx-text-fill: #D7E2EE;        /* El mismo tono que los botones por defecto */
+    -fx-padding: 6 0 6 38;         /* El mismo padding izquierdo que los botones */
+    -fx-letter-spacing: 0.2px;     /* Muy ligero, casi igual que los botones */
+    -fx-effect: null;
+}
+
 
