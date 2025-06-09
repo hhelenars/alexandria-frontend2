@@ -1,85 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="rootPane"
-            prefHeight="600" prefWidth="900"
-            xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.alexandriafrontend.controllers.MenuController">
+<AnchorPane fx:id="rootPane" prefHeight="600" prefWidth="900" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alexandriafrontend.controllers.MenuController">
 
-    <!-- Menú lateral fijo -->
-    <AnchorPane fx:id="menuPane"
-                prefHeight="600" prefWidth="264"
-                style="-fx-background-color: #e6e6e6;">
+    <!-- Menú lateral profesional -->
+    <AnchorPane fx:id="menuPane" prefHeight="600" prefWidth="264">
         <children>
-            <Label layoutX="21" layoutY="34" styleClass="titulo" text="Biblioteca">
-                <font>
-                    <Font name="System Bold" size="18"/>
-                </font>
-            </Label>
+            <!-- Título principal -->
+            <Label layoutX="32" layoutY="36" styleClass="titulo" text="Biblioteca" />
 
+            <!-- Subtítulo menú -->
+            <Label layoutX="14.0" layoutY="76.0" styleClass="seccion" text="Menú" />
 
-            <Label layoutX="37" layoutY="67" styleClass="titulo" text="Menu">
-                <font>
-                    <Font name="System Bold" size="14"/>
-                </font>
-            </Label>
-
-            <Button fx:id="btnHome"
-                    layoutX="37" layoutY="97"
-                    prefHeight="25" prefWidth="203"
-                    onAction="#handleMenuAction"
-                    styleClass="menu-button" text="   Home"/>
-
-            <Button fx:id="btnBuscar"
-                    layoutX="37" layoutY="132"
-                    prefHeight="25" prefWidth="203"
-                    onAction="#handleMenuAction"
-                    styleClass="menu-button" text="   Buscar"/>
-
-            <Button fx:id="btnFavoritos"
-                    layoutX="37" layoutY="167"
-                    prefHeight="25" prefWidth="203"
-                    onAction="#handleMenuAction"
-                    styleClass="menu-button" text="   Favoritos"
-                    visible="false" managed="false"/>
-
-            <Button fx:id="btnBiblioteca"
-                    layoutX="37" layoutY="202"
-                    prefHeight="25" prefWidth="203"
-                    onAction="#handleMenuAction"
-                    styleClass="menu-button" text="   Mi biblioteca"
-                    visible="false" managed="false"/>
-
-            <Button fx:id="btnLecturasCompartidas"
-                    layoutX="37" layoutY="237"
-                    prefHeight="25" prefWidth="203"
-                    onAction="#handleMenuAction"
-                    styleClass="menu-button" text="   Lecturas compartidas"
-                    visible="false" managed="false"/>
-
-            <Button fx:id="btnCerrarSesion"
-                    layoutX="37" layoutY="272"
-                    prefHeight="25" prefWidth="203"
-                    onAction="#handleMenuAction"
-                    styleClass="menu-button" text="   Cerrar sesión"
-                    visible="false" managed="false"/>
+            <!-- VBox con separación entre botones -->
+            <VBox fx:id="vboxMenu" layoutX="0" layoutY="110" prefHeight="134.0" prefWidth="264" spacing="10">
+                <children>
+                    <Button fx:id="btnHome" onAction="#handleMenuAction" prefHeight="17.0" prefWidth="251.0" styleClass="menu-button" text="   Home" />
+                    <Button fx:id="btnBuscar" onAction="#handleMenuAction" prefHeight="17.0" prefWidth="251.0" styleClass="menu-button" text="   Buscar" />
+                    <Button fx:id="btnFavoritos" managed="false" onAction="#handleMenuAction" styleClass="menu-button" text="   Favoritos" visible="false" />
+                    <Button fx:id="btnBiblioteca" managed="false" onAction="#handleMenuAction" styleClass="menu-button" text="   Mi biblioteca" visible="false" />
+                    <Button fx:id="btnLecturasCompartidas" managed="false" onAction="#handleMenuAction" styleClass="menu-button" text="   Lecturas compartidas" visible="false" />
+                    <Button fx:id="btnCerrarSesion" managed="false" onAction="#handleMenuAction" styleClass="menu-button cerrar-sesion" text="   Cerrar sesión" visible="false" />
+                </children>
+            </VBox>
         </children>
     </AnchorPane>
 
-
     <!-- Contenedor para cargar contenido dinámico -->
-    <AnchorPane fx:id="contentPane"
-                layoutX="264" layoutY="0"
-                prefWidth="636" prefHeight="600"/>
+    <AnchorPane fx:id="contentPane" layoutX="264" layoutY="0" prefHeight="600" prefWidth="636" />
 
-    <Button fx:id="btnToggleMenu"
-            layoutX="10" layoutY="10"
-            text="☰"
-            style="-fx-background-color: transparent; -fx-font-size: 12px;"
-            onAction="#toggleMenu"/>
+    <!-- Botón hamburguesa para mostrar/ocultar menú -->
+    <Button fx:id="btnToggleMenu" layoutX="10" layoutY="10" onAction="#toggleMenu" style="-fx-background-color: transparent; -fx-font-size: 18px;" text="☰" />
 </AnchorPane>
-

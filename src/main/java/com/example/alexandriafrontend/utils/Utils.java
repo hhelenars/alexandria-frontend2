@@ -24,7 +24,7 @@ public class Utils {
         }
     }
 
-    public static void cargarPantalla(AnchorPane contenedor, String rutaFXML) {
+    public static void cargarPantalla(AnchorPane contenedor, String rutaFXML, String rutaCSS) {
         try {
             FXMLLoader loader = new FXMLLoader(Utils.class.getResource(rutaFXML));
             AnchorPane nuevoContenido = loader.load();
@@ -32,14 +32,21 @@ public class Utils {
             contenedor.getChildren().clear();
             contenedor.getChildren().add(nuevoContenido);
 
-            // Ajustar anclajes para que el contenido ocupe todo el espacio del contenedor
+            // Ajustar anclajes
             AnchorPane.setTopAnchor(nuevoContenido, 0.0);
             AnchorPane.setBottomAnchor(nuevoContenido, 0.0);
             AnchorPane.setLeftAnchor(nuevoContenido, 0.0);
             AnchorPane.setRightAnchor(nuevoContenido, 0.0);
 
+            // Limpiar y aplicar CSS solo para el contenido
+            contenedor.getStylesheets().clear();
+            if (rutaCSS != null && !rutaCSS.isEmpty()) {
+                contenedor.getStylesheets().add(Utils.class.getResource(rutaCSS).toExternalForm());
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 }

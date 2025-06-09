@@ -28,7 +28,7 @@ public class MenuController {
 
     @FXML
     private void initialize() {
-        cargarContenido("/com/example/alexandriafrontend/Inicio.fxml");
+        cargarContenido("/com/example/alexandriafrontend/Inicio.fxml","/styles/Inicio.css");
         ocultarOpcionesPrivadas();
     }
 
@@ -79,8 +79,9 @@ public class MenuController {
         Object source = event.getSource();
 
         if (source == btnHome) {
-            cargarContenido("/com/example/alexandriafrontend/Inicio.fxml");
-        } else if (source == btnBuscar) {
+            cargarContenido("/com/example/alexandriafrontend/Inicio.fxml", "/styles/Inicio.css");
+        } /*
+        else if (source == btnBuscar) {
             cargarContenido("/com/example/alexandriafrontend/Buscar.fxml");
         } else if (source == btnFavoritos) {
             cargarContenido("/com/example/alexandriafrontend/Favoritos.fxml");
@@ -92,6 +93,7 @@ public class MenuController {
             // Aquí podrías gestionar cerrar sesión y volver al login
             System.out.println("Cerrar sesión pulsado");
         }
+        */
     }
 
     public void cargarInicioConUsuario(Usuario usuario) {
@@ -115,7 +117,7 @@ public class MenuController {
         }
     }
 
-    private void cargarContenido(String rutaFXML) {
-        Utils.cargarPantalla(contentPane, rutaFXML);
+    private void cargarContenido(String rutaFXML, String rutaCSS) {
+        Utils.cargarPantalla(contentPane, rutaFXML, rutaCSS);
     }
 }

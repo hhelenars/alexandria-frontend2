@@ -11,6 +11,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Menu.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 900, 600);
+        scene.getStylesheets().add(App.class.getResource("/styles/menu.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
