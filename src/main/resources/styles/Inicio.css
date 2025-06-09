@@ -1,17 +1,15 @@
-/* FONDO GENERAL DEL CONTENIDO */
+
 #contenido {
     -fx-background-color: linear-gradient(to bottom right, #23272F 80%, #20232B 100%);
     /* Sombra sutil si quieres dar "profundidad" */
     -fx-effect: dropshadow(gaussian, rgba(44,56,80,0.13), 20, 0.12, 0, 5);
 }
 
-/* TITULOS Y SUBTITULOS */
 .titulo {
     -fx-font-family: "Segoe UI", "Roboto", "Arial", sans-serif;
     -fx-text-fill: #F7FAFC;
     -fx-font-weight: 700;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.09), 0, 0.08, 0, 1);
-    /* Deja que el tamaño lo ponga el FXML si quieres, pero así puedes unificar todo aquí: */
 }
 
 .titulo[fx|id="lblNombreUsuario"] {
@@ -21,7 +19,6 @@
     -fx-padding: 0 0 0 12px;
 }
 
-/* BOTÓN REGISTRARSE: tono azul cyan, estilo material */
 .registrarse-button {
     -fx-background-color: linear-gradient(to right, #319795, #38B2AC);
     -fx-text-fill: white;
@@ -46,7 +43,6 @@
     -fx-scale-y: 1.04;
 }
 
-/* BOTÓN INICIAR SESIÓN: blanco sobre oscuro, con outline al hacer hover */
 .iniciar-button {
     -fx-background-color: #1A202C;
     -fx-text-fill: #63B3ED;
@@ -73,7 +69,6 @@
     -fx-scale-y: 1.04;
 }
 
-/* LISTA DE LIBROS */
 .list-view {
     -fx-background-color: #23272F;
     -fx-border-color: #2D3748;
@@ -104,7 +99,6 @@
     -fx-effect: dropshadow(gaussian, rgba(99,179,237,0.14), 4, 0.10, 0, 1);
 }
 
-/* Scrollbar pro */
 .list-view .scroll-bar:vertical {
     -fx-background-color: transparent;
 }
@@ -115,14 +109,12 @@
     -fx-pref-width: 8px;
 }
 
-/* Ajusta los LABELS normales */
 .label {
     -fx-font-family: "Segoe UI", "Roboto", "Arial", sans-serif;
     -fx-text-fill: #E2E8F0;
     -fx-font-weight: 500;
 }
 
-/* Ajuste extra para el responsive y la coherencia visual */
 @font-face {
     font-family: "Segoe UI";
     src: local("Segoe UI"), local("Roboto"), local("Arial"), local("sans-serif");

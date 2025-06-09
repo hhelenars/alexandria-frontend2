@@ -12,7 +12,6 @@ public class LecturasCompartidasController {
 
     @FXML
     public void initialize() {
-        // Lista de libros compartidos de ejemplo
         ObservableList<String> librosCompartidos = FXCollections.observableArrayList(
                 "El Quijote",
                 "Cien años de soledad",

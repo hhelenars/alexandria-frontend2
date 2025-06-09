@@ -55,10 +55,8 @@ public class LoginController {
 				if (response.isSuccessful() && response.body() != null) {
 					String token = response.body().getToken();
 
-					// Guardar sesión
 					SesionUsuario.getInstancia().iniciarSesionConToken(token);
 
-					// Redirigir o cambiar de vista
 					System.out.println("Login correcto. Bienvenido " + response.body().getPrimerNombre());
 					Platform.runLater(() -> {
 						Stage stage = (Stage) btnIniciarSesion.getScene().getWindow();

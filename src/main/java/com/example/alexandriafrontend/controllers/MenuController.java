@@ -48,7 +48,7 @@ public class MenuController {
             menuPane.setVisible(true);
             menuPane.setManaged(true);
             contentPane.setLayoutX(264);
-            contentPane.setPrefWidth(636); // 900 - 264
+            contentPane.setPrefWidth(636);
         }
 
         menuVisible = !menuVisible;
@@ -92,10 +92,7 @@ public class MenuController {
         }  else if (source == btnLecturasCompartidas) {
             cargarContenido("/com/example/alexandriafrontend/LecturasCompartidas.fxml","/styles/LecturasCompartidas.css");
         } else if (source == btnCerrarSesion) {
-            // Limpiar la sesión del usuario
             SesionUsuario.getInstancia().cerrarSesion();
-
-            // Cambiar pantalla y aplicar el CSS del Login
             Stage stage = (Stage) btnCerrarSesion.getScene().getWindow();
             Utils.cambiarPantalla(
                     stage,
@@ -103,13 +100,9 @@ public class MenuController {
                     "/styles/Login.css",
                     c -> {}                    
             );
-
-            System.out.println("Sesión cerrada. Redirigiendo al login.");
         }
 
     }
-
-
 
     public void cargarInicioConUsuario(Usuario usuario) {
         try {

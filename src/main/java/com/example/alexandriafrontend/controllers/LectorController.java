@@ -216,7 +216,6 @@ public class LectorController {
 
         request.setLibroId(libroId);
 
-        // En este ejemplo todo va en la página 0, puedes cambiarlo si usas más páginas
         Map<Integer, List<Anotacion>> mapa = new HashMap<>();
         mapa.put(0, new ArrayList<>(anotaciones)); // lista ya generada con tus anotaciones
         request.setAnotaciones(mapa);
@@ -264,7 +263,7 @@ public class LectorController {
                             for (int i = a.getStart(); i < a.getEnd(); i++) {
                                 textArea.setStyle(i, i + 1, a.getEstilos());
                             }
-                            anotaciones.add(a); // añadimos al array local para mostrar tooltip
+                            anotaciones.add(a);
                         }
                         System.out.println("📝 Anotaciones cargadas y aplicadas.");
                     });
