@@ -1,12 +1,14 @@
 package com.example.alexandriafrontend.controllers;
 
 import com.example.alexandriafrontend.model.Usuario;
+import com.example.alexandriafrontend.session.SesionUsuario;
 import com.example.alexandriafrontend.utils.Utils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.event.ActionEvent;
+import javafx.stage.Stage;
 
 import javax.swing.undo.UndoableEditSupport;
 import java.io.IOException;
@@ -90,11 +92,24 @@ public class MenuController {
         }  else if (source == btnLecturasCompartidas) {
             cargarContenido("/com/example/alexandriafrontend/LecturasCompartidas.fxml","/styles/LecturasCompartidas.css");
         } else if (source == btnCerrarSesion) {
-            // Aquí podrías gestionar cerrar sesión y volver al login
-            System.out.println("Cerrar sesión pulsado");
+            // Limpiar la sesión del usuario
+            SesionUsuario.getInstancia().cerrarSesion();
+
+            // Cambiar pantalla y aplicar el CSS del Login
+            Stage stage = (Stage) btnCerrarSesion.getScene().getWindow();
+            Utils.cambiarPantalla(
+                    stage,
+                    "/com/example/alexandriafrontend/Login.fxml",
+                    "/styles/Login.css",       // Aquí la ruta a tu CSS de login
+                    c -> {}                    // Lambda vacío porque no necesitas lógica extra
+            );
+
+            System.out.println("Sesión cerrada. Redirigiendo al login.");
         }
 
     }
+
+
 
     public void cargarInicioConUsuario(Usuario usuario) {
         try {

@@ -1,45 +1,148 @@
 /* Fondo general del lector */
-#textFlow {
-    -fx-background-color: #fdfdfd;
-    -fx-padding: 30px;
+#lectorPane, .anchor-pane, .root {
+    -fx-background-color: linear-gradient(to bottom right, #1b222b 86%, #222836 100%);
 }
 
-/* Estilo de los párrafos */
-.parrafo {
-    -fx-font-size: 12px;
-    -fx-font-family: "Segoe UI";
-    -fx-text-fill: #333333;
-    -fx-padding: 10px 0 10px 0;
-    -fx-wrap-text: true;
+/* Contenedor principal (VBox) */
+.vbox {
+    -fx-background-color: transparent;
+    -fx-padding: 24 24 24 24;
+    -fx-spacing: 12px;
 }
 
-.barra-subrayado {
-    -fx-padding: 5px;
-    -fx-border-radius: 5px;
-    -fx-background-radius: 5px;
-    -fx-border-color: #ccc;
-    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.2), 4, 0.5, 0, 2);
+/* Barra superior (botones de anotación) */
+.hbox, #barraFlotante {
+    -fx-background-color: #222836;
+    -fx-background-radius: 10px;
+    -fx-padding: 12 20 12 20;
+    -fx-spacing: 12px;
+    -fx-effect: dropshadow(gaussian, rgba(44,56,80,0.12), 8, 0.11, 0, 2);
+    -fx-alignment: center-left;
+    -fx-border-color: #242C36;
+    -fx-border-width: 0 0 1px 0;
 }
 
+/* Botones de anotación */
+.button {
+    -fx-background-color: linear-gradient(to bottom right, #202736, #27324b);
+    -fx-background-radius: 10px;
+    -fx-text-fill: #4FD1C5;
+    -fx-font-family: "Segoe UI", "Roboto", "Arial", sans-serif;
+    -fx-font-weight: 600;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+    -fx-padding: 7 18 7 18;
+    -fx-effect: dropshadow(gaussian, rgba(44,56,80,0.10), 3, 0.10, 0, 1);
+    -fx-border-color: #293348;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+    -fx-transition: background-color 0.14s;
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to bottom right, #26303f 85%, #314260 100%);
+    -fx-text-fill: #63B3ED;
+    -fx-border-color: #4FD1C5;
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+}
+
+#btnGuardarAnotaciones {
+    -fx-background-color: linear-gradient(to right, #319795, #38B2AC);
+    -fx-text-fill: white;
+    -fx-font-weight: 700;
+    -fx-border-color: #4FD1C5;
+}
+
+#btnGuardarAnotaciones:hover {
+    -fx-background-color: linear-gradient(to right, #38B2AC, #63B3ED);
+    -fx-text-fill: #E6FFFA;
+}
+
+/* ================= TEXTO DEL LIBRO ================== */
+
+/* Area de texto principal (RichTextFX) */
+.style-classed-text-area, .text-area {
+    -fx-background-color: #23272F;
+    -fx-background-radius: 16px;
+    -fx-font-family: "Georgia", "serif";
+    -fx-font-size: 20px;
+    -fx-text-fill: #F5F7FA;
+    -fx-padding: 32 28 32 32;
+    -fx-line-spacing: 0.22em;
+    -fx-border-radius: 16px;
+    -fx-border-width: 2px;
+    -fx-border-color: #2D3748;
+    -fx-effect: dropshadow(gaussian, rgba(44,56,80,0.09), 12, 0.11, 0, 2);
+    -fx-highlight-fill: #63B3ED66; /* selección de texto */
+    -fx-highlight-text-fill: #23272F;
+    -fx-cursor: text;
+}
+
+.style-classed-text-area:focused {
+    -fx-border-color: #4FD1C5;
+    -fx-background-color: #252B38;
+}
+
+/* ============== SUBRAYADOS Y ANOTACIONES ============== */
+
+/* Amarillo pastel suave para subrayados */
 .color-amarillo {
-    -fx-fill: black;
-    -rtfx-background-color: yellow;
-}
-
-.color-verde {
-    -fx-fill: black;
-    -rtfx-background-color: lightgreen;
-}
-
-.color-azul {
-    -fx-fill: black;
-    -rtfx-background-color: lightskyblue;
-}
-
-/* Línea baja para indicar comentario */
-.comentado {
+    -rtfx-background-color: #fff59d;
+    -rtfx-underline: true;
+    -rtfx-underline-color: #ffe066;
+    -fx-background-color: transparent;
+    -fx-fill: #f6e05e;
     -fx-underline: true;
-    -fx-border-color: gray;
-    -fx-border-width: 0 0 1.5px 0;
+    -fx-font-weight: 700;
+    -fx-border-width: 0 0 3px 0;
+    -fx-border-color: #ffe066;
     -fx-border-style: solid;
+}
+
+/* Azul suave para subrayado */
+.color-azul {
+    -rtfx-background-color: #63b3ed44;
+    -rtfx-underline: true;
+    -rtfx-underline-color: #63B3ED;
+    -fx-background-color: transparent;
+    -fx-fill: #63B3ED;
+    -fx-border-width: 0 0 3px 0;
+    -fx-border-color: #63B3ED;
+    -fx-font-weight: 700;
+    -fx-underline: true;
+}
+
+/* Verde para subrayado */
+.color-verde {
+    -rtfx-background-color: #4fd1c544;
+    -rtfx-underline: true;
+    -rtfx-underline-color: #4FD1C5;
+    -fx-background-color: transparent;
+    -fx-fill: #4FD1C5;
+    -fx-border-width: 0 0 3px 0;
+    -fx-border-color: #4FD1C5;
+    -fx-font-weight: 700;
+    -fx-underline: true;
+}
+
+/* Comentado: línea fina naranja (anotación) */
+.comentado {
+    -rtfx-underline: true;
+    -rtfx-underline-color: #F6AD55;
+    -fx-border-width: 0 0 2.5px 0;
+    -fx-border-color: #F6AD55;
+    -fx-underline: true;
+    -fx-font-style: italic;
+    -fx-fill: #f6ad55;
+}
+
+/* ================= SCROLLBARS MEJORADOS =================== */
+.scroll-bar, .scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+.scroll-bar .thumb {
+    -fx-background-color: #4FD1C5;
+    -fx-background-radius: 8px;
+    -fx-pref-width: 8px;
 }
